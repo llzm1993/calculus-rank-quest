@@ -1,0 +1,21 @@
+{
+  "name": "calculus-rank-quest",
+  "version": "2.0.0",
+  "private": true,
+  "description": "微积分晋级：注册登录、云端进度与教师学习记录",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test --test-isolation=none tests/*.test.cjs",
+    "build": "node build-site.cjs",
+    "build:offline": "node build.cjs",
+    "start": "node serve.cjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.118.0"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.10"
+  }
+}

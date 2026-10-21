@@ -1,0 +1,10 @@
+'use strict';
+const fs = require('node:fs');
+const path = require('node:path');
+const read = name => fs.readFileSync(path.join(__dirname,name),'utf8');
+let html = read('index.html').replace('<link rel="stylesheet" href="styles.css">', `<style>${read('styles.css')}</style>`);
+html=html.replace('<script src="config.js"></script>','<script>window.CALCULUS_CONFIG={mode:"offline"};</script>');
+for(const file of ['vendor/supabase.js','cloud.js','cloud-sync.js'])html=html.replace(`<script src="${file}"></script>`,'');
+for(const file of ['curriculum.js','engine.js','accounts.js','app.js']) html = html.replace(`<script src="${file}"></script>`, () => `<script>\n${read(file).replace(/<\/script/gi,'<\\/script')}\n</script>`);
+fs.writeFileSync(path.join(__dirname,'微积分晋级.html'),html,'utf8');
+console.log('已生成 微积分晋级.html，可直接双击打开。');
