@@ -7,7 +7,7 @@
     "node": ">=22"
   },
   "scripts": {
-    "test": "node --test --test-isolation=none tests/*.test.cjs",
+    "test": "node --test tests/*.test.cjs",
     "build": "node build-site.cjs",
     "build:offline": "node build.cjs",
     "start": "node serve.cjs"
